@@ -1,0 +1,12 @@
+// mat tab stylings
+::ng-deep .mat-tab-label-content {
+  font-size: 1.2em;
+}
+
+::ng-deep .mat-ink-bar {
+  background-color: $primary-color !important;
+}
+
+::ng-deep .mat-tab-body-content {
+  overflow: hidden !important;
+}

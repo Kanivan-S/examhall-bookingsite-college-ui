@@ -6,6 +6,8 @@ export const environment = {
   production: false
 };
 
+export const API = 'http://localhost:9000/api/v1'; //Local Server
+export const IMG_URL = 'assets/img';
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

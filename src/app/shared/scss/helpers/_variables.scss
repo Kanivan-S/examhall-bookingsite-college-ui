@@ -1,0 +1,29 @@
+// Colors to be used in the website
+
+$primary-color: #6c63ff;
+$secondary_color: #5f58e4;
+$header-color: #6678df;
+$sub-header-color: #3986c5;
+
+// Gradients to be used in the website
+
+$nav-gradient: linear-gradient(120deg, #6c64f4, #9cafff);
+
+// Box Shadows
+
+$medium_shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+$larger_shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+
+// URLs Link
+
+$img_url: "/assets/img";
+$svg_url: "/assets/svg";
+
+// The breakpoints here are the screen sizes for responsiveness
+
+$breakpoints: (
+  "ultra-small": 320px,
+  "small": 425px,
+  "medium": 768px,
+  "large": 1200px,
+);

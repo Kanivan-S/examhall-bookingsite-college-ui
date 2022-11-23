@@ -1,0 +1,70 @@
+
+<div class="center-wrap">
+  <mat-tab-group>
+    <mat-tab [label]="isAdmin ?  'Admin Login' : 'Login'">
+      <form [formGroup]="loginForm" class="loginformdiv">
+        <div class="msg error" *ngIf="loginError">{{ loginError }}</div>
+        <mat-form-field class="form-field">
+          <mat-label>Email</mat-label>
+          <input matInput type="text" formControlName="email" required />
+          <mat-error *ngIf="loginForm.get('email').invalid">Please enter the email</mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="password"
+            required
+          />
+          <mat-error *ngIf="loginForm.get('password').invalid"
+            >Please enter the password</mat-error
+          >
+        </mat-form-field>
+        <button mat-raised-button color ="primary" style="width: 100%;" [disabled]="loginForm.invalid" (click)="onLogin()">
+          Login
+          <span class="material-icons"> east </span>
+        </button>
+
+
+        <!-- <mat-spinner style="width:10%;display: inline;margin-left: 5%;height: auto;" [diameter]="15"></mat-spinner>  -->
+      </form>
+
+    </mat-tab>
+    <ng-container *ngIf="!isAdmin">
+    <mat-tab label="Register">
+
+        <form [formGroup]="registerForm">
+          <div class="msg error" *ngIf="registerError">{{ registerError }}</div>
+          <mat-form-field class="form-field">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" formControlName="email" required />
+            <mat-error *ngIf="registerForm.get('email').invalid"
+              >Please enter the email</mat-error
+            >
+          </mat-form-field>
+
+          <mat-form-field class="form-field">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="password"
+              formControlName="password"
+              required
+            />
+            <mat-error *ngIf="registerForm.get('password').invalid"
+              >Please enter the password</mat-error
+            >
+          </mat-form-field>
+          <button mat-raised-button color ="primary" style="width: 100%;" [disabled]="registerForm.invalid" (click)="onRegister()">
+            Register
+            <span class="material-icons"> east </span>
+          </button>
+        </form>
+
+
+
+    </mat-tab>
+  </ng-container>
+  </mat-tab-group>
+</div>

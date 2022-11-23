@@ -1,0 +1,41 @@
+.active {
+  background: #f5f5f5;
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 300px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  background: $primary-color;
+  z-index: 1;
+}
+.item {
+  padding-left: 0.5em;
+}
+.portal-head {
+  border-bottom: 1px solid gainsboro;
+}
+.portal-title {
+  font-family: "Lato";
+  font-size: 0.95em;
+  font-weight: bold;
+}
+@media only screen and (max-width: 960px) {
+  .mat-toolbar-single-row {
+    padding-left: 0;
+  }
+  .portal-title {
+    padding-left: 0.9em;
+  }
+}

@@ -1,0 +1,18 @@
+// Helpers
+@import "/src/app/shared/scss/helpers/inherit";
+@import "/src/app/shared/scss/helpers/variables";
+@import "/src/app/shared/scss/helpers/mediaQueries";
+
+// Base
+@import "/src/app/shared/scss/base/fonts";
+@import "/src/app/shared/scss/base/material";
+@import "/src/app/shared/scss/base/grid";
+
+// Layouts
+@import "/src/app/shared/scss/layouts/msg";
+@import "/src/app/shared/scss/layouts/form";
+@import "/src/app/shared/scss/layouts/nav";
+@import "/src/app/shared/scss/layouts/container";
+
+// Components
+@import "/src/app/shared/scss/components/model";

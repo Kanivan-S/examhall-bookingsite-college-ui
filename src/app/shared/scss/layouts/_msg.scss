@@ -1,0 +1,9 @@
+.msg {
+  padding: 0.5em;
+  &.error {
+    color: #f43b3b;
+    background: #ffeeee;
+    border: 1px solid #ff4e4e;
+    border-radius: 0.2em;
+  }
+}

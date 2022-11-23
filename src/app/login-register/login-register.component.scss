@@ -1,0 +1,137 @@
+@import "/src/app/shared/scss/main.scss";
+$primary-color: #6c63ff;
+$secondary_color: #5f58e4;
+$header-color: #6678df;
+$sub-header-color: #3986c5;
+.msg {
+  width: 100%;
+}
+.header {
+  width: 100%;
+  border-bottom: 1.5px solid gainsboro;
+  padding: 1em;
+  .web-title {
+    display: flex;
+    align-items: center;
+    gap: 1.75em;
+    font-family: monospace;
+    img {
+      width: 75px;
+    }
+    .web-title-content {
+      h3 {
+        font-size: 1.4em;
+      }
+      p {
+        color: black;
+      }
+    }
+  }
+}
+
+.center-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85%;
+  .auth-wrap {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    box-shadow: $medium_shadow;
+    padding: 1em;
+    height: 60vh;
+    width: 55vw;
+    min-width: max(55vw, 60%);
+    border-radius: 15px;
+    .img {
+      background-image: url("#{$img_url}/regi-img.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2em;
+      button {
+        margin-top: 2em;
+        @extend %buttons;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+        background: blue;//adf
+        padding: 0.5em 1.5em;
+        color: white;
+        border-radius: 0.3em;
+        font-size: 1.1em;
+        width: 100%;
+        span {
+          opacity: 0;
+          margin-left: -10%;
+        }
+        &:hover {
+          outline: 2px solid green;
+          outline-offset: 0.3em;
+          span {
+            animation: btn_slide 0.4s ease-in-out;
+            animation-fill-mode: forwards;
+          }
+        }
+        &:disabled {
+          transform: scale(1);
+          outline: none;
+          span {
+            animation: none;
+          }
+        }
+        @keyframes btn_slide {
+          from {
+            opacity: 0;
+            margin-left: -10%;
+          }
+          to {
+            opacity: 1;
+            margin-left: 0%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints,medium)) {
+  .center-wrap {
+    padding: 1.5em;
+    .auth-wrap {
+      grid-template-columns: 1fr;
+      width: 100%;
+      .img {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints,small)) {
+  .header {
+    .web-title {
+      gap: 1em;
+      .web-title-content {
+        h3 {
+          font-size: 1.2em;
+        }
+      }
+    }
+  }
+  .center-wrap {
+    height: calc(85% - 122.3px);
+    .auth-wrap {
+      form {
+        padding: 0.85em;
+      }
+    }
+  }
+}
