@@ -15,6 +15,7 @@ import { MatListModule } from '@angular/material/list';
 import { LoginRegisterComponent } from './login-register/login-register.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatInputModule,
     CommonModule,
     MatButtonModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppService } from '../app.service';
 /** Error when invalid control is dirty, touched, or submitted. */
 
 
@@ -21,7 +22,7 @@ export class LoginRegisterComponent implements OnInit {
   public togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
-  constructor(private router:Router,private route:ActivatedRoute) {
+  constructor(private router:Router,private route:ActivatedRoute,private aps:AppService) {
     this.loginForm=new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl(null, Validators.required),
@@ -42,13 +43,27 @@ export class LoginRegisterComponent implements OnInit {
   ngOnInit(): void {
   }
   onLogin(){
+    const url=Array.from(this.route.snapshot.url);
+    let role=1;
+    // if(url[0].path.toString()=='user')
+    const form=new FormData();
+    form.append('email',this.loginForm.get('email').value);
+    form.append('password',this.loginForm.get('password').value);
+    form.append('role',role.toString());
+    this.aps.authenicateUser(form).subscribe(
+      (data)=>{
+        console.log("value got "+data.headers.get('one'));
+      },
+      (err)=>{
+        console.log(err);
+      }
+    )
     console.log(this.loginForm.get('email').value);
     console.log(this.loginForm.get('password').value);
   }
   onRegister(){
     console.log(this.registerForm.get('email').value);
     console.log(this.registerForm.get('password').value);
-
   }
 
 }
