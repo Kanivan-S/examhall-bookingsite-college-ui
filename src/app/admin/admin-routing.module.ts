@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginRegisterComponent } from '../login-register/login-register.component';
 const routes:Routes=[
   {
     path:'',
@@ -10,6 +11,7 @@ const routes:Routes=[
     data:{title:'EHall Booking'},
 
     children:[
+
       {
         path:'',
         redirectTo:'dashboard',
@@ -26,7 +28,8 @@ const routes:Routes=[
       },
 
     ]
-  }
+  },
+  
 ]
 @NgModule({
   imports: [RouterModule.forChild(routes)],

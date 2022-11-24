@@ -11,8 +11,13 @@ export class AppService {
   constructor(private http:HttpClient) {}
 
   authenicateUser(form :FormData){
-    console.log("Calling app.service ...\n");
-    return this.http.post(`${API}/users/login`,form,{observe:'response'});
+    console.log("Calling app.service ..."+form.get('email'));
+    return this.http.post<any>(`${API}/authenticate/login`,form,{observe:'response'});
+  }
+  authenicateRegister(){
+    console.log("Calling authenicateRegister ...\n");
+    return this.http.get<any>(`${API}/users/gotten`);
+
   }
 
 }

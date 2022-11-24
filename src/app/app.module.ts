@@ -16,11 +16,14 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UsersComponent } from './users/users.component';
 @NgModule({
   declarations: [
     AppComponent,
 
     LoginRegisterComponent,
+
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
