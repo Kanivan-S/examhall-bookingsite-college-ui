@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminRoutingModule } from './admin-routing.module';
-import { AdminComponent } from './admin.component';
+import { UsersRoutingModule } from './users-routing.module';
+import { UsersComponent } from './users.component';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,7 +18,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
     declarations: [
-        AdminComponent,
+      UsersComponent,
 
         HomeComponent,
     ],
@@ -26,7 +26,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         CommonModule,
         SharedModule,
         MatStepperModule,
-        AdminRoutingModule,
+        UsersRoutingModule,
         MatGridListModule,
         CdkStepperModule,
         MatSidenavModule,
@@ -36,4 +36,4 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         MatBadgeModule,
     ]
 })
-export class AdminModule { }
+export class UsersModule { }

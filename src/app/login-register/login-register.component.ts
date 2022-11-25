@@ -28,6 +28,7 @@ export class LoginRegisterComponent implements OnInit {
       password: new FormControl(null, Validators.required),
     })
     this.registerForm = new FormGroup({
+      uname:new FormControl(null,Validators.required),
       email: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),
     });
@@ -51,15 +52,17 @@ export class LoginRegisterComponent implements OnInit {
     if(this.isAdmin==true){
       role=1;
       const form=new FormData();
-      form.append('email',this.loginForm.get('email').value);
+      form.append('mail',this.loginForm.get('email').value);
       form.append('password',this.loginForm.get('password').value);
       form.append('role',role.toString());
 
-      this.aps.authenicateUser(form).subscribe(
+      this.aps.authenticateUser(form).subscribe(
         (data)=>{
           localStorage.setItem("token","ajnfknf.adminidafndksfndsf,.token.");
           localStorage.setItem("userType","admin");
-          console.log("value got "+data+" "+data.headers.get('role'));
+          // console.log("value got "+data+" "+data.headers.get('role'));
+
+          this.router.navigate(['admin']);
         },
         (err)=>{
           alert("Invalid credentials for admin login..\n");
@@ -69,16 +72,16 @@ export class LoginRegisterComponent implements OnInit {
     }
     else{
       const form=new FormData();
-      form.append('email',this.loginForm.get('email').value);
+      form.append('mail',this.loginForm.get('email').value);
       form.append('password',this.loginForm.get('password').value);
       form.append('role',role.toString());
 
-      this.aps.authenicateUser(form).subscribe(
+      this.aps.authenticateUser(form).subscribe(
         (data)=>{
           localStorage.setItem("token","uafdsd,.userakdfnnd,teitoken");
           localStorage.setItem("userType","user");
-          console.log("value got "+data.headers.get('accept')+" "+data.headers.get('role'));
-          this.router.navigate(['alogin']);
+          // console.log("value got "+data.headers.get('accept')+" "+data.headers.get('role'));
+          this.router.navigate(['user']);
         },
         (err)=>{
           alert("Error in login credentials for user..\n");
@@ -88,16 +91,25 @@ export class LoginRegisterComponent implements OnInit {
     }
   }
   onRegister(){
-    // this.aps.authenicateRegister().subscribe(
-    //   (data)=>{
-    //     console.log("value fot ;"+data.headers.get('one'));
-    //   },
-    //   (err)=>{
-    //     console.log(err);
-    //   }
-    // )
-    console.log(this.registerForm.get('email').value);
-    console.log(this.registerForm.get('password').value);
+    const form=new FormData();
+    form.append('uname',this.registerForm.get('uname').value);
+    form.append('mail',this.registerForm.get('email').value);
+    form.append('password',this.registerForm.get('password').value);
+    this.aps.authenticateRegister(form).subscribe(
+    (data)=>{
+      alert("user registered!");
+      localStorage.setItem("token","uafdsd,.userakdfnnd,teitoken");
+      localStorage.setItem("userType","user");
+      this.router.navigate(['user']);
+    },
+    (err)=>{
+      alert("Already exists\n");
+      console.log(err);
+    }
+    )
+
+    // console.log(this.registerForm.get('email').value);
+    // console.log(this.registerForm.get('password').value);
   }
 
 }

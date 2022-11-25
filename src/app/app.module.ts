@@ -16,34 +16,32 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { UsersComponent } from './users/users.component';
+import { SharedModule } from "./shared/shared.moude";
 @NgModule({
-  declarations: [
-    AppComponent,
-
-    LoginRegisterComponent,
-
-    UsersComponent,
-  ],
-  imports: [
-    BrowserModule,
-    MatTabsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatSidenavModule,
-    FormsModule, ReactiveFormsModule,
-    MatToolbarModule,
-    MatFormFieldModule,
-    MatMenuModule,
-    MatIconModule,
-    MatDividerModule,
-    MatListModule,
-    MatInputModule,
-    CommonModule,
-    MatButtonModule,
-    HttpClientModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        LoginRegisterComponent,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        MatTabsModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatSidenavModule,
+        FormsModule, ReactiveFormsModule,
+        MatToolbarModule,
+        MatFormFieldModule,
+        MatMenuModule,
+        MatIconModule,
+        MatDividerModule,
+        MatListModule,
+        MatInputModule,
+        CommonModule,
+        MatButtonModule,
+        HttpClientModule,
+        SharedModule
+    ]
 })
 export class AppModule {}
