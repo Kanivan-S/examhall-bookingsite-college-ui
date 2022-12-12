@@ -1,0 +1,67 @@
+<div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2">History</div>
+    <div class="page__content shadow p-3 position-relative">
+      <div>
+        <div>
+          <h1>Rejection History</h1>
+        </div>
+        <div>
+          <mat-divider></mat-divider>
+        </div>
+
+        <div *ngIf="rejecthistory_list.length==0">
+          <div>
+            <p id="no-results">
+              No results found !
+            </p>
+          </div>
+
+        </div>
+
+        <div *ngIf="rejecthistory_list && rejecthistory_list.length > 0">
+
+          <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="SNO">
+              <mat-header-cell *matHeaderCellDef>S NO</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.sno}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Category">
+              <mat-header-cell *matHeaderCellDef> Category</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.catname}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Room">
+              <mat-header-cell *matHeaderCellDef> Room </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.rname}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Date">
+              <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.sdate}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Start">
+              <mat-header-cell *matHeaderCellDef> Start </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.fromtime}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="End">
+              <mat-header-cell *matHeaderCellDef> End </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.totime}} </mat-cell>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row >
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row >
+          </mat-table>
+          <!-- <mat-paginator [pageSizeOptions]="[4,8]" showFirstLastButtons></mat-paginator> -->
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+

@@ -9,9 +9,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+
 @NgModule({
   declarations: [SidenavComponent,HeaderComponent],
-  imports: [ RouterModule, FormsModule,MatMenuModule,MatToolbarModule,MatIconModule,MatDividerModule,MatListModule],
+  imports: [ RouterModule, FormsModule,MatMenuModule,CommonModule,MatToolbarModule,MatIconModule,MatDividerModule,MatListModule],
   exports: [SidenavComponent,HeaderComponent],
 })
 export class SharedModule {}

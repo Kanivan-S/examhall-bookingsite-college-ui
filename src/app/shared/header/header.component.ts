@@ -10,9 +10,18 @@ import { AppService } from 'src/app/app.service';
 export class HeaderComponent implements OnInit {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
+  myname:string='';
+
   constructor(private router: Router,private aps:AppService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(localStorage.getItem("userName")!=null){
+      this.myname=localStorage.getItem("userName");
+    }
+    else{
+      this.myname="Username";
+    }
+  }
 
   toggleSidebar() {
     this.toggleSidebarForMe.emit();

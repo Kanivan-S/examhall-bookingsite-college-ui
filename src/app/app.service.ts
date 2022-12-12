@@ -12,7 +12,6 @@ export class AppService {
   constructor(private http:HttpClient,private router:Router,private route:ActivatedRoute) {}
 
   authenticateUser(form :FormData){
-    console.log("Calling app.service ..."+form.get('email'));
     return this.http.post<any>(`${API}/authenticate/login`,form,{observe:'response'});
   }
   authenticateRegister(form :FormData){

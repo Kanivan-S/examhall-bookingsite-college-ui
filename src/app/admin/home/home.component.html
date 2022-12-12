@@ -1,7 +1,111 @@
 <div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2">Home</div>
+  <div class="d-flex page__box p-3 mt-2">Book Rooms</div>
   <div class="page__content shadow p-3 position-relative">
-    <div class="page__content-data position-absolute text-center">
-  </div>
+    <div class="bookpage catbox">
+      <div id="catboxitem">
+        <mat-form-field appearance="fill" [formGroup]="getAvailable_roomForm"  >
+          <mat-label>Select Category</mat-label>
+          <mat-select formControlName="selectFormControl" (selectionChange)="changingevent()">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let i of categories" [value]="i._id">
+              {{i.cname}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div id="catboxitem datebox">
+        <mat-form-field appearance="outline"   [formGroup]="getAvailable_roomForm"  (change)="changingevent()">
+        <mat-label> Choose date</mat-label>
+        <input
+          matInput
+          type="date"
+          required
+          formControlName="sdate"
+        />
+      </mat-form-field>
+      </div>
+        <div id="catboxitem">
+          <mat-form-field [formGroup]="getAvailable_roomForm"  >
+            <mat-label>Start time</mat-label>
+            <input
+            (ngModelChange)="changingevent()"
+            type="text"
+            matInput
+            [format]="24"
+            [ngxTimepicker]="defaultValue"
+          require
+            formControlName="fromtime"
+          /><ngx-material-timepicker #defaultValue>
+          </ngx-material-timepicker>
+          </mat-form-field>
+        </div>
+        <div id="catboxitem">
+          <mat-form-field [formGroup]="getAvailable_roomForm" >
+            <mat-label>End time</mat-label>
+            <input
+            (ngModelChange)="changingevent()"
+            type="text"
+            [format]="24"
+            matInput
+            [ngxTimepicker]="fdsd"
+          require
+            formControlName="totime"
+          /><ngx-material-timepicker #fdsd>
+          </ngx-material-timepicker>
+
+          </mat-form-field>
+        </div>
+      <!-- <button mat-raised-button color="primary" [disabled]="getAvailable_roomForm.invalid" (click)="availablerooms_list()">Create Room</button> -->
+    </div>
+    <div>
+      <mat-divider></mat-divider>
+    </div>
+
+    <div *ngIf="Availroomlist.length==0">
+      <div>
+        <p id="no-results">
+          No results found !
+        </p>
+      </div>
+
+    </div>
+    <div *ngIf="Availroomlist && Availroomlist.length > 0">
+
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="SNO">
+          <mat-header-cell *matHeaderCellDef>S NO</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.sno}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Room_Name">
+          <mat-header-cell *matHeaderCellDef> Room Name</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.rname}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Description">
+          <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+
+          <mat-cell *matCellDef="let element"> <mat-icon
+            #tooltip="matTooltip" matTooltip={{element.rinfo}} (click)="tooltip.show()">info</mat-icon> </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="btn_bookme">
+          <mat-header-cell *matHeaderCellDef> Booking</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button mat-raised-button color="primary" (click)="bookroom(row.rid)">Book me</button>
+          </mat-cell>
+
+
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row >
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row >
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[4,8]" showFirstLastButtons></mat-paginator>
+
+    </div>
   </div>
 </div>
+
+
+

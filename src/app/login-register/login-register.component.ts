@@ -58,8 +58,9 @@ export class LoginRegisterComponent implements OnInit {
 
       this.aps.authenticateUser(form).subscribe(
         (data)=>{
-          localStorage.setItem("token","ajnfknf.adminidafndksfndsf,.token.");
+          localStorage.setItem("token",data.body.accept);
           localStorage.setItem("userType","admin");
+          localStorage.setItem("userName",data.body.name);
           // console.log("value got "+data+" "+data.headers.get('role'));
 
           this.router.navigate(['admin']);
@@ -78,8 +79,9 @@ export class LoginRegisterComponent implements OnInit {
 
       this.aps.authenticateUser(form).subscribe(
         (data)=>{
-          localStorage.setItem("token","uafdsd,.userakdfnnd,teitoken");
+          localStorage.setItem("token",data.body.accept);
           localStorage.setItem("userType","user");
+           localStorage.setItem("userName",data.body.name);
           // console.log("value got "+data.headers.get('accept')+" "+data.headers.get('role'));
           this.router.navigate(['user']);
         },
@@ -98,12 +100,14 @@ export class LoginRegisterComponent implements OnInit {
     this.aps.authenticateRegister(form).subscribe(
     (data)=>{
       alert("user registered!");
-      localStorage.setItem("token","uafdsd,.userakdfnnd,teitoken");
-      localStorage.setItem("userType","user");
-      this.router.navigate(['user']);
+      localStorage.setItem("token",data.body.accept);
+          localStorage.setItem("userType","user");
+           localStorage.setItem("userName",data.body.name);
+           this.router.navigate(['user']);
     },
     (err)=>{
       alert("Already exists\n");
+      this.loginError=err;
       console.log(err);
     }
     )

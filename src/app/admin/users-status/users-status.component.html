@@ -1,0 +1,98 @@
+<div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2">User Status</div>
+    <div class="page__content shadow p-3 position-relative">
+        <div class="bookpage catbox">
+            <div id="catboxitem">
+              <mat-form-field appearance="fill" [formGroup]="usersstatusform"  >
+                <mat-label>Select Category</mat-label>
+                <mat-select formControlName="selectFormControl" (selectionChange)="changingcatevent()">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let i of categories" [value]="i._id">
+                    {{i.cname}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div id="catboxitem">
+                <mat-form-field appearance="fill" [formGroup]="usersstatusform"  >
+                  <mat-label>Select Rooms</mat-label>
+                  <mat-select formControlName="selectFormControlRoom" (selectionChange)="changingevent()">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let i of roomslist" [value]="i._id">
+                      {{i.rname}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            <div id="catboxitem datebox">
+              <mat-form-field appearance="outline"   [formGroup]="usersstatusform" (selectionChange)="changingevent()" (change)="changingevent()">
+              <mat-label> Choose date</mat-label>
+              <input
+                matInput
+                type="date"
+                required
+                formControlName="sdate"
+              />
+            </mat-form-field>
+            </div>
+            <div id="catboxitem">
+                <button mat-raised-button color="primary" [disabled]="usersstatusform.invalid" (click)="getRoomStatus()">Get Status</button>
+            </div>
+          </div>
+          <div>
+            <mat-divider></mat-divider>
+          </div>
+
+          <div *ngIf="perroomstatus.length==0">
+            <div>
+              <p id="no-results">
+                No results found !
+              </p>
+            </div>
+
+          </div>
+
+          <div *ngIf="perroomstatus && perroomstatus.length > 0">
+
+            <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+              <ng-container matColumnDef="SNO">
+                <mat-header-cell *matHeaderCellDef>S NO</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.sno}} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="Username">
+                <mat-header-cell *matHeaderCellDef> Username</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="Start">
+                <mat-header-cell *matHeaderCellDef> Start</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.start}} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="End">
+                <mat-header-cell *matHeaderCellDef> End</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.end}} </mat-cell>
+              </ng-container>
+
+
+
+              <ng-container matColumnDef="Button">
+                <mat-header-cell *matHeaderCellDef> Button</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <button mat-raised-button color="primary" (click)="rejectBooking(row.bookid)">Reject</button>
+                </mat-cell>
+
+
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row >
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row >
+            </mat-table>
+            <mat-paginator [pageSizeOptions]="[4,8]" showFirstLastButtons></mat-paginator>
+
+          </div>
+
+    </div>
+</div>
+

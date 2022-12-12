@@ -6,7 +6,7 @@
     min-height: 120px;
     background: #1e293b;
     margin: 0 -1rem;
-    font-size: 36px;
+    font-size: 2em;
   }
   &__content {
     min-height: calc(100vh - 178px);
@@ -14,11 +14,55 @@
     margin-top: -2rem;
     background: white;
     color: black;
-    font-size: 2rem;
-    &-data {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+    font-size: 1em;
+    // &-data {
+    //   top: 50%;
+    //   left: 50%;
+    //   transform: translate(-50%, -50%);
+    // }
   }
+}
+#datebox{
+  width: 100%;
+}
+.bookpage{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  // background-color: red;
+  align-items: center;
+  align-content: space-between;
+}
+#catboxitem{
+  padding:0 1.5em;
+}
+// #miniature{
+//   top: 30%;
+//       left: 35%;
+
+// }
+
+
+::ng-deep ngx-material-timepicker-content{
+
+  --body-background-color: #fff;
+  --primary-font-family: 'Roboto',sans-serif;
+  --button-color: #1e293b !important;
+  --dial-active-color: #fff;
+  --dial-inactive-color: rgba(255, 255, 255, .5);
+  --dial-background-color: #1e293b !important;
+  --dial-editable-active-color: #1e293b !important;
+  --dial-editable-background-color: #fff;
+  --clock-face-time-active-color: #fff;
+  --clock-face-time-inactive-color: #6c6c6c;
+  --clock-face-inner-time-inactive-color: #929292;
+  --clock-face-time-disabled-color: #c5c5c5;
+  --clock-face-background-color: #f0f0f0;
+  --clock-hand-color: #1e293b !important;
+}
+
+#no-results{
+  text-align: center;
+  padding: 2em;
+  font-size: 2em;
 }
