@@ -42,6 +42,8 @@ export class LoginRegisterComponent implements OnInit {
     console.log(Array.from(this.route.snapshot.url));
   }
   onLogin(){
+    //i wont tell directly but u can easily guess I'm 1st in common
+    //Dont think too much!
     const url=Array.from(this.route.snapshot.url);
     let role=2;
     // if(url[0].path.toString()=='user')
@@ -58,6 +60,7 @@ export class LoginRegisterComponent implements OnInit {
 
       this.aps.authenticateUser(form).subscribe(
         (data)=>{
+          localStorage.clear();
           localStorage.setItem("token",data.body.accept);
           localStorage.setItem("userType","admin");
           localStorage.setItem("userName",data.body.name);
@@ -66,6 +69,7 @@ export class LoginRegisterComponent implements OnInit {
           this.router.navigate(['admin']);
         },
         (err)=>{
+          localStorage.setItem("clue","Hurrah , u found the url but you can't find the admin credentials It's easy man dont think too much");
           alert("Invalid credentials for admin login..\n");
           console.log(err);
         }
@@ -117,3 +121,5 @@ export class LoginRegisterComponent implements OnInit {
   }
 
 }
+//*ran*#212@gmail.com"[-10:-9]+"admin"+"(*ran*#212@gmail.com"[-4:]
+//wanna know password go where u start
